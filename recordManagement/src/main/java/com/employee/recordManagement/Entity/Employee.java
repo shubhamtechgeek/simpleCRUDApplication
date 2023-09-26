@@ -7,8 +7,8 @@ import javax.persistence.*;
 public class Employee {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private Integer id;
+    @Column(unique = true)
+    private Integer empId;
 
     private String firstName;
 
@@ -17,29 +17,24 @@ public class Employee {
     @Column(unique = true)
     private String email;
 
-    @Column(unique = true)
-    private Integer empId;
 
-    private boolean status;
 
     @Override
     public String toString() {
         return "Employee{" +
-                "id=" + id +
+                "empId=" + empId +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", empId=" + empId +
-                ", status=" + status +
+                ", email='" + email +
                 '}';
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getEmpId() {
+        return empId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setEmpId(Integer empId) {
+        this.empId = empId;
     }
 
     public String getFirstName() {
@@ -66,19 +61,5 @@ public class Employee {
         this.email = email;
     }
 
-    public Integer getEmpId() {
-        return empId;
-    }
 
-    public void setEmpId(Integer empId) {
-        this.empId = empId;
-    }
-
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
 }
