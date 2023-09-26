@@ -1,4 +1,4 @@
-# simpleCRUDApplication
+
 # Simple CRUD Apllication to build a employee records portal. 
 # This Application will be using Spring Boot and in-memory H2 Database
 # Application APIs will be tested in Postman 
