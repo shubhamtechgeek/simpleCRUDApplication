@@ -31,15 +31,10 @@ public class employeeServiceImpl implements employeeService{
     }
 
     @Override
-    public void deleteEmployee(employeeDTO employeeDTO) throws InfyEmployeeException {
-        Optional<Employee> optional = employeeRepo.findById(employeeDTO.getEmpId());
+    public void deleteEmployee(Integer identify) throws InfyEmployeeException {
+        Optional<Employee> optional = employeeRepo.findById(identify);
         if(optional.isPresent()){
-            Employee employee = new Employee();
-            employee.setEmpId(employeeDTO.getEmpId());
-            employee.setFirstName(employeeDTO.getFirstName());
-            employee.setLastName(employeeDTO.getLastName());
-            employee.setEmail(employeeDTO.getEmail());
-            employeeRepo.delete(employee);
+            employeeRepo.deleteById(identify);
         }else{
             throw new InfyEmployeeException("deleteEmployee Service : deletion Failed :: Employee does not Exists or previously deleted");
         }
@@ -56,7 +51,7 @@ public class employeeServiceImpl implements employeeService{
             employee.setEmail(employeeDTO.getEmail());
             employeeRepo.save(employee);
         }else{
-            throw new InfyEmployeeException("deleteEmployee Service : update failed :: Employee either does not Exists");
+            throw new InfyEmployeeException("deleteEmployee Service : update failed :: Employee does not Exists");
         }
     }
 
